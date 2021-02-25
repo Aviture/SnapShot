@@ -1,0 +1,15 @@
+trigger: none
+
+schedules:
+  - cron: '0 6 * * *'
+    displayName: Nightly build
+    branches:
+      include:
+        - master
+    always: true
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- template: /.devops/templates/build-steps.yml

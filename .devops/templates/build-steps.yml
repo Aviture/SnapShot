@@ -1,0 +1,28 @@
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '12.x'
+    displayName: 'Install Node.js'
+  
+  - task: YarnInstaller@3
+    inputs:
+      versionSpec: '1.x'
+      checkLatest: true
+    displayName: 'Yarn Tool Install'
+  
+  - task: Yarn@3
+    inputs:
+      arguments: 'install'
+    displayName: 'Install'
+  
+  - task: Yarn@3
+    inputs:
+      arguments: 'build'
+    displayName: 'Build'
+  
+  - task: Yarn@3
+    inputs:
+      arguments: 'test'
+    displayName: 'Test'
+    env:
+      CI: true
